@@ -1,0 +1,18 @@
+import { Module } from '@nestjs/common';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { Tarefa } from './entities/tarefa.entity';
+import { TarefasController } from './tarefas.controller';
+import { TarefasService } from './tarefas.service';
+import { StorageModule } from '../storage/storage.module';
+import { MailModule } from '../mail/mail.module';
+
+@Module({
+  imports: [
+    TypeOrmModule.forFeature([Tarefa]),
+    StorageModule,
+    MailModule,
+  ],
+  controllers: [TarefasController],
+  providers: [TarefasService],
+})
+export class TarefasModule {}
